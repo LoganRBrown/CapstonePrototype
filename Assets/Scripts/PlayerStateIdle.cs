@@ -13,7 +13,11 @@ public class PlayerStateIdle : PlayerState {
 
         if (Input.GetAxis("Horizontal") == 0 || Input.GetAxis("Vertical") == 0) return new PlayerStateMoving();
 
-        if (Input.GetKeyDown("Fire1") || Input.GetKeyDown("Ability")) return new PlayerStateCombat();
+        if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Ability"))
+        {
+            Debug.Log("hit");
+            return new PlayerStateCombat();
+        }
 
         return null;
     }
