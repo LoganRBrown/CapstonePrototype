@@ -4,13 +4,39 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
+    public struct UniqueAbility
+    {
+        public enum Type
+        {
+            Discount,
+            Invulnerability
+        }
+        public enum Attribute
+        {
+            Health,
+            Mana,
+            Stamina
+        }
+
+        public Type type;
+        public float percentEffect;
+        public Attribute attribute;
+        public float duration;
+    }
+
+    UniqueAbility[] abilities = new UniqueAbility[3] {
+        new UniqueAbility() {type = UniqueAbility.Type.Discount, percentEffect = 100 , attribute = UniqueAbility.Attribute.Mana , duration = 1 },
+        new UniqueAbility(),
+        new UniqueAbility()
+    };
+
     public Transform cam;
 
-    public float health = 100;
+    public float Health = 100;
 
-    public float mana = 100;
+    public float Mana = 100;
 
-    public float stamina = 50;
+    public float Stamina = 50;
 
     #region UniqueAbility
 
@@ -107,6 +133,15 @@ public class PlayerMovement : MonoBehaviour {
 
     void ActivatePlayerAbility()
     {
+        print(playerAbility);
 
+        //switch (playerAbilityAttribute) {
+        //    case Health
+        //    break;
+        //    case
+        //    break;
+        //    case
+        //    break;
+        //}
     }
 }
