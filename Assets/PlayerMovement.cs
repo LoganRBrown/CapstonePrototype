@@ -16,6 +16,15 @@ public class PlayerMovement : MonoBehaviour {
 
     string playerAbility;
 
+    string playerAbilityType;
+
+    float playerAbilityPercent;
+
+    string playerAbilityAttribute;
+
+    float playerAbilityDuration;
+
+
     /// <summary>
     /// This is the Unique ability variable that determines the percent to be applied to the specifc attributes determined by the rest of the ability.
     /// </summary>
@@ -85,14 +94,19 @@ public class PlayerMovement : MonoBehaviour {
 
         int abilLength = Random.Range(-1, 5);
 
-        float percent = abilityPercent[abilPerc];
+        playerAbilityPercent = abilityPercent[abilPerc];
 
-        string type = abilityType[abilType];
+        playerAbilityType = abilityType[abilType];
 
-        string attribute = abilityAttribute[abilAtt];
+        playerAbilityAttribute = abilityAttribute[abilAtt];
 
-        float duration = abilityDuration[abilLength];
+        playerAbilityDuration = abilityDuration[abilLength];
 
-        playerAbility = type + percent + attribute + duration;
+        playerAbility = playerAbilityType + " of " + playerAbilityPercent + "%  to Player " + playerAbilityAttribute + "for " + playerAbilityDuration + " seconds";
+    }
+
+    void ActivatePlayerAbility()
+    {
+
     }
 }
