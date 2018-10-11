@@ -1,16 +1,29 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStateIdle : MonoBehaviour {
+public class EnemyStateIdle : EnemyState {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    //CharacterController pawn;
+
+    public override void OnBegin(EnemyController controller, CharacterController charController)
+    {
+        base.OnBegin(controller, charController);
+
+        //pawn = charController;
+    }
+
+    public override EnemyState Update()
+    {
+
+        return null;
+
+    }
+
+
+
+    
+
+    
 }
