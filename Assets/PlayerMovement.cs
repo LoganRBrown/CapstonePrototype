@@ -22,11 +22,12 @@ public class PlayerMovement : MonoBehaviour {
         public float percentEffect;
         public Attribute attribute;
         public float duration;
+        public string role;
     }
 
     UniqueAbility[] abilities = new UniqueAbility[3] {
-        new UniqueAbility() {type = UniqueAbility.Type.Discount, percentEffect = 100 , attribute = UniqueAbility.Attribute.Mana , duration = 1 },
-        new UniqueAbility(),
+        new UniqueAbility() {type = UniqueAbility.Type.Discount, percentEffect = 100 , attribute = UniqueAbility.Attribute.Mana , duration = 1, role = "Caster" },
+        new UniqueAbility() {type = UniqueAbility.Type.Invulnerability, percentEffect = 100, attribute = UniqueAbility.Attribute.Health, duration = .5f, role = "Tank" },
         new UniqueAbility()
     };
 
