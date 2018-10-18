@@ -14,9 +14,17 @@ public class Spell : MonoBehaviour {
 
     public static string collidedWith;
 
-	
-	// Update is called once per frame
-	void Update () {
+    public bool invertLookX = false;
+
+    private void Start()
+    {
+        transform.Rotate(90, 0, 0);
+        transform.localScale += new Vector3(.2f, .2f, .2f);
+    }
+
+
+
+    void Update () {
 
         transform.position += new Vector3(0, 0, SPEED) * Time.deltaTime;
 
@@ -45,8 +53,8 @@ public class Spell : MonoBehaviour {
 
     public void FollowPlayerView()
     {
-        float lookX = Input.GetAxis("Mouse X");
-        float lookY = Input.GetAxis("Mouse Y");
+        float lookX = Input.GetAxis("Mouse X") * (invertLookX ? -1 : 1) * 5;
 
+       // transform.Ro(0, lookX, 0);
     }
 }

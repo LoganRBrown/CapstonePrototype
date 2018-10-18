@@ -74,6 +74,8 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetButtonDown("Ability")) UseAbility();
 
+        ManaRegen();
+
     }
 
     private void UseAbility()
@@ -104,6 +106,11 @@ public class PlayerController : MonoBehaviour {
             PlayerStateCombat.spellCost = oldSpellCost;
         }
 
+    }
+
+    private void ManaRegen()
+    {
+        playerMana += Time.deltaTime;
     }
 
     private void SwitchPlayerState(PlayerState newState)
