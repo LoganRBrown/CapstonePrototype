@@ -12,6 +12,6 @@ public class EnemyStateAttacking : EnemyState {
 
     public override EnemyState Update()
     {
-        throw new NotImplementedException();
+        return null;
     }
 }
