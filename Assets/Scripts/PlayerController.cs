@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour {
 
     private CharacterController controller;
 
+    public Spell prefabSpellToAccess;
+
     public float playerHealth = 100;
 
     public static float playerMana = 100;

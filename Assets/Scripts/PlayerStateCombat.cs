@@ -22,28 +22,19 @@ public class PlayerStateCombat : PlayerState {
 
         pawn = charControl;
 
+        prefabSpell = controller.prefabSpellToAccess;
+
         FetchEnemies();
+
+        CastSpell();
 
     }
 
     override public PlayerState Update()
     {
-        //put behavior here
-
-        MoveAround();
-
-        CastSpell();
-
-        foreach (GameObject enemy in enemies)
-        {
-
-        }
-
         // put transitions here
 
-
-
-        return null;
+        return new PlayerStateIdle();
     }
 
     public void FetchEnemies()
@@ -59,7 +50,7 @@ public class PlayerStateCombat : PlayerState {
         if (Input.GetMouseButtonDown(0))
         {
             spellCost = 10;
-            Spell newSpell = GameObject.Instantiate(prefabSpell, pos, Quaternion.identity);
+            Spell newSpell = Object.Instantiate(prefabSpell, pos, Quaternion.identity);
             Spell.isUpgraded = false;
             spells.Add(newSpell);
             PlayerController.playerMana -= spellCost;
@@ -68,7 +59,7 @@ public class PlayerStateCombat : PlayerState {
         if (Input.GetMouseButtonDown(1))
         {
             spellCost = 50;
-            Spell newSpell = GameObject.Instantiate(prefabSpell, pos, Quaternion.identity);
+            Spell newSpell = Object.Instantiate(prefabSpell, pos, Quaternion.identity);
             Spell.isUpgraded = true;
             spells.Add(newSpell);
             PlayerController.playerMana -= spellCost;

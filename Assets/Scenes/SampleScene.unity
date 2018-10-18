@@ -613,8 +613,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2de232ed07f274bafa3cf98b1c660b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellToAccess: {fileID: 114780262157154292, guid: b8259e43f61f5c64d9037d41e3dd5481,
+    type: 2}
   playerHealth: 100
-  playerMana: 100
   lookSensitivityX: 5
   lookSensitivityY: 5
   invertLookX: 0
