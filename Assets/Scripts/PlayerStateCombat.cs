@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerStateCombat : PlayerState {
 
-    private GameObject[] enemies;
-
     public static float spellCost;
 
     public Spell prefabSpell;
@@ -24,8 +22,6 @@ public class PlayerStateCombat : PlayerState {
 
         prefabSpell = controller.prefabSpellToAccess;
 
-        FetchEnemies();
-
         CastSpell();
 
     }
@@ -35,11 +31,6 @@ public class PlayerStateCombat : PlayerState {
         // put transitions here
 
         return new PlayerStateIdle();
-    }
-
-    public void FetchEnemies()
-    {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
     }
 
     private void CastSpell()

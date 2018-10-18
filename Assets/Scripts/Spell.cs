@@ -51,10 +51,10 @@ public class Spell : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    public void FollowPlayerView()
-    {
-        float lookX = Input.GetAxis("Mouse X") * (invertLookX ? -1 : 1) * 5;
+    //public void FollowPlayerView()
+    //{
+    //    float lookX = Input.GetAxis("Mouse X") * (invertLookX ? -1 : 1) * 5;
 
-       // transform.Ro(0, lookX, 0);
-    }
+    //   // transform.Ro(0, lookX, 0);
+    //}
 }

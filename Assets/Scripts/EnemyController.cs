@@ -12,8 +12,6 @@ public class EnemyController : MonoBehaviour {
 
     private GameObject player;
 
-    private EnemyStateIdle idle = new EnemyStateIdle();
-
     public bool isBoss = false;
 
     public float degreesToRotate = 180;
