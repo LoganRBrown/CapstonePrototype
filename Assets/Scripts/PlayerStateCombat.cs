@@ -50,25 +50,22 @@ public class PlayerStateCombat : PlayerState {
         if (Input.GetMouseButtonDown(0))
         {
             spellCost = 10;
+            if (controller.playerMana < spellCost) return;
             Spell newSpell = Object.Instantiate(prefabSpell, pos, Quaternion.identity);
             Spell.isUpgraded = false;
             spells.Add(newSpell);
-            PlayerController.playerMana -= spellCost;
+            controller.playerMana -= spellCost;
         }
 
         if (Input.GetMouseButtonDown(1))
         {
             spellCost = 50;
+            if (controller.playerMana < spellCost) return;
             Spell newSpell = Object.Instantiate(prefabSpell, pos, Quaternion.identity);
             Spell.isUpgraded = true;
             spells.Add(newSpell);
-            PlayerController.playerMana -= spellCost;
+            controller.playerMana -= spellCost;
         }
-    }
-
-    private void HandleCombat()
-    {
-
     }
 
     private void MoveAround()

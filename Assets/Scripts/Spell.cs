@@ -29,7 +29,7 @@ public class Spell : MonoBehaviour {
 
         if(deathTimer <= 0)
         {
-            Destroy(this);
+            Destroy(gameObject);
 
             deathTimer = 10;
         }
@@ -40,6 +40,13 @@ public class Spell : MonoBehaviour {
     {
         collidedWith = collision.gameObject.name;
 
-        Destroy(this);
+        Destroy(gameObject);
+    }
+
+    public void FollowPlayerView()
+    {
+        float lookX = Input.GetAxis("Mouse X");
+        float lookY = Input.GetAxis("Mouse Y");
+
     }
 }

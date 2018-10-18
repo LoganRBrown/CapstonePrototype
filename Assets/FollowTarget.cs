@@ -10,12 +10,9 @@ public class FollowTarget : MonoBehaviour {
     public float offsetMinY = 1;
     public float offsetMaxY = 5;
 
-    OrbitalCamera orbit;
-
 	// Use this for initialization
 	void Start ()
     {
-        orbit = GetComponent<OrbitalCamera>();
 	}
 	
 	// Update is called once per frame

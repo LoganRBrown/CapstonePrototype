@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
 
     public float playerHealth = 100;
 
-    public static float playerMana = 100;
+    public float playerMana = 100;
 
     public float lookSensitivityX = 5;
     public float lookSensitivityY = 5;
