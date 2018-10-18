@@ -6,7 +6,11 @@ public class PlayerStateCombat : PlayerState {
 
     private GameObject[] enemies;
 
-    public static float spellCost = 10;
+    public static float spellCost;
+
+    public Spell prefabSpell;
+
+    List<Spell> spells = new List<Spell>();
 
     CharacterController pawn;
 
@@ -28,12 +32,16 @@ public class PlayerStateCombat : PlayerState {
 
         MoveAround();
 
+        CastSpell();
+
         foreach (GameObject enemy in enemies)
         {
 
         }
 
         // put transitions here
+
+
 
         return null;
     }
@@ -45,7 +53,26 @@ public class PlayerStateCombat : PlayerState {
 
     private void CastSpell()
     {
+        Vector3 pos = pawn.transform.position;
+        pos += new Vector3(0, 0, 2);
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            spellCost = 10;
+            Spell newSpell = GameObject.Instantiate(prefabSpell, pos, Quaternion.identity);
+            Spell.isUpgraded = false;
+            spells.Add(newSpell);
+            PlayerController.playerMana -= spellCost;
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            spellCost = 50;
+            Spell newSpell = GameObject.Instantiate(prefabSpell, pos, Quaternion.identity);
+            Spell.isUpgraded = true;
+            spells.Add(newSpell);
+            PlayerController.playerMana -= spellCost;
+        }
     }
 
     private void HandleCombat()

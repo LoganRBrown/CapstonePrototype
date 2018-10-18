@@ -22,7 +22,8 @@ public class EnemyController : MonoBehaviour {
 
     float timer = 5;
 
-    // Use this for initialization
+    [HideInInspector] public static bool isDead = false;
+
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
 
@@ -31,20 +32,25 @@ public class EnemyController : MonoBehaviour {
         controller = GetComponent<CharacterController>();
 	}
 	
-	// Update is called once per frame
 	void Update () {
-
-        //Debug.Log(idle);
 
         if(enemyState != null)
         {
             Patrol();
         }
 
-        PlayerInSight(player, this);
+        if(PlayerInSight(player, this))
+        {
+            SwitchEnemyState(new EnemyStateAttacking());
+        }
 
         EnemyState newState = enemyState.Update();
         SwitchEnemyState(newState);
+
+        if(isDead)
+        {
+            Destroy(this);
+        }
 		
 	}
 
@@ -100,29 +106,22 @@ public class EnemyController : MonoBehaviour {
 
         //occulision (raycast from e to p)
 
-        Debug.Log(distance);
-
         if(distance <= 15)
         {
             if(direction >= .5f)
             {
                 RaycastHit hit;
                 if (Physics.Raycast(enemy.transform.position, toPlayer, out hit, Mathf.Infinity))
-                {
-                    Debug.Log("Did Hit");
+                { 
                     //can see player
                     return true;
                 }
                 else
                 {
-                    Debug.Log("Did not Hit");
                     //cannot see player
-
                 }
             }
         }
-
-
 
         return false;
     }

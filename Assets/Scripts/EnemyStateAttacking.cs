@@ -1,16 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStateAttacking : MonoBehaviour {
+public class EnemyStateAttacking : EnemyState {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public override void OnBegin(EnemyController controller, CharacterController charController)
+    {
+        base.OnBegin(controller, charController);
+    }
+
+    public override EnemyState Update()
+    {
+        throw new NotImplementedException();
+    }
 }

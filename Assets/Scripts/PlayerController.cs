@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour {
 
     public float playerHealth = 100;
 
-    public float playerMana = 100;
+    public static float playerMana = 100;
 
     public float lookSensitivityX = 5;
     public float lookSensitivityY = 5;
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour {
 
     private void UseAbility()
     {
-        float abilityTimer = Time.deltaTime * playerClass.duration;
+        float abilityTimer = playerClass.duration * Time.deltaTime;
 
         float oldSpellCost = PlayerStateCombat.spellCost;
 
