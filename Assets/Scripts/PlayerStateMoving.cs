@@ -24,6 +24,13 @@ public class PlayerStateMoving : PlayerState {
 
         // put transitions here
 
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) return new PlayerStateIdle();
+
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+        {
+            return new PlayerStateCombat();
+        }
+
         return null;
     }
 

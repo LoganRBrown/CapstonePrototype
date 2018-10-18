@@ -6,34 +6,101 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    public struct UniqueAbility
+    {
+        public enum Type
+        {
+            Discount,
+            Invulnerability
+        }
+        public enum Attribute
+        {
+            Health,
+            Mana,
+            Stamina
+        }
+
+        public Type type;
+        public float percentEffect;
+        public Attribute attribute;
+        public float duration;
+    }
+
+    UniqueAbility[] abilities = new UniqueAbility[2] {
+        new UniqueAbility() {type = UniqueAbility.Type.Discount, percentEffect = 100 , attribute = UniqueAbility.Attribute.Mana , duration = 1 },
+        new UniqueAbility() {type = UniqueAbility.Type.Invulnerability, percentEffect = 100, attribute = UniqueAbility.Attribute.Health, duration = .5f }
+    };
+
     private PlayerState playerState;
+
+    public UniqueAbility playerClass;
 
     private Camera cam;
 
     private CharacterController controller;
+
+    public float playerHealth = 100;
+
+    public float playerMana = 100;
 
     public float lookSensitivityX = 5;
     public float lookSensitivityY = 5;
     public bool invertLookX = false;
     public bool invertLookY = true;
 
-    // Use this for initialization
+
+
     void Start () {
+
+        playerClass = abilities[0];
 
         SwitchPlayerState(new PlayerStateIdle());
 
         cam = GetComponentInChildren<Camera>();
 
         controller = GetComponent<CharacterController>();
+
+
 	}
 	
-	// Update is called once per frame
 	void Update ()
     {
         LookAround();
 
         PlayerState newState = playerState.Update();
         SwitchPlayerState(newState);
+
+        if (Input.GetButtonDown("Ability")) UseAbility();
+
+    }
+
+    private void UseAbility()
+    {
+        float abilityTimer = Time.deltaTime * playerClass.duration;
+
+        float oldSpellCost = PlayerStateCombat.spellCost;
+
+        while(abilityTimer > 0)
+        {
+
+            if (playerClass.type == UniqueAbility.Type.Discount)
+            {
+                if(playerClass.attribute == UniqueAbility.Attribute.Mana)
+                {
+                    float newSpellCost = (oldSpellCost / playerClass.percentEffect) * 100;
+
+                    PlayerStateCombat.spellCost = newSpellCost;
+                }
+            }
+
+            abilityTimer -= Time.deltaTime;
+
+        }
+
+        if(abilityTimer <= 0)
+        {
+            PlayerStateCombat.spellCost = oldSpellCost;
+        }
 
     }
 
@@ -60,4 +127,5 @@ public class PlayerController : MonoBehaviour {
         cam.transform.Rotate(lookY, 0, 0);
 
     }
+
 }

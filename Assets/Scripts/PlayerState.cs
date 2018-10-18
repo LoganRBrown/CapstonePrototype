@@ -13,12 +13,12 @@ public abstract class PlayerState {
     virtual public void OnBegin(PlayerController controller, CharacterController charControl)
     {
         this.controller = controller;
+
     }
 
     virtual public void OnEnd()
     {
 
     }
-
 
 }

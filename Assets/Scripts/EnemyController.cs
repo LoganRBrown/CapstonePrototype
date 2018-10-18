@@ -18,8 +18,6 @@ public class EnemyController : MonoBehaviour {
 
     public float degreesToRotate = 180;
 
-    public LayerMask rayMask;
-
     Vector3 previous = Vector3.zero;
 
     float timer = 5;
@@ -109,7 +107,7 @@ public class EnemyController : MonoBehaviour {
             if(direction >= .5f)
             {
                 RaycastHit hit;
-                if (Physics.Raycast(enemy.transform.position, toPlayer, out hit, Mathf.Infinity, rayMask))
+                if (Physics.Raycast(enemy.transform.position, toPlayer, out hit, Mathf.Infinity))
                 {
                     Debug.Log("Did Hit");
                     //can see player
